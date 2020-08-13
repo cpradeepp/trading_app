@@ -12,7 +12,6 @@ const logInfo = info => !isTestEnv ? console.log(FgYellow,`*****       ${info}  
 const logEndOfInfo = info => !isTestEnv ? console.log(FgYellow,`-----------END OF ${info}-----------\n`) : '';
 
 const logTable = (data, info) => {
-    console.log('isTestEnv defined ' + isTestEnv)
     if(!isTestEnv) {
         logInfo(info);
         console.table(FgBlack, data);
