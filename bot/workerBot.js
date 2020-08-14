@@ -7,23 +7,23 @@
 import Assets from './services/assets';
 import OrderBook from './services/orderBook';
 
-import {logTable} from './helpers/logger';
+import { logTable } from './helpers/logger';
 
 const ORDER_BOOK_INTERVAL = 5000;
 const ASSET_BALANCE_INTERVAL = 30000;
 
 class WorkerBot {
-    initialiseBot = async () => {
-        await this.workerFunctions();
-        setInterval( this.workerFunctions, ORDER_BOOK_INTERVAL );
-        setInterval( () => logTable(Assets.balance, 'AVAILABLE ASSETS'), ASSET_BALANCE_INTERVAL);
-    };
+  async initialiseBot() {
+    await this.workerFunctions();
+    setInterval(this.workerFunctions, ORDER_BOOK_INTERVAL);
+    setInterval(() => logTable(Assets.balance, 'AVAILABLE ASSETS'), ASSET_BALANCE_INTERVAL);
+  }
 
-    workerFunctions = async () => {
-        await OrderBook.updateOrderBookData();
-        await OrderBook.placeOrders();
-        await OrderBook.fulfillOrders();
-    };
+  async workerFunctions() {
+    await OrderBook.updateOrderBookData();
+    await OrderBook.placeOrders();
+    await OrderBook.fulfillOrders();
+  }
 }
 
 export default new WorkerBot();

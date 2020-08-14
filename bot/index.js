@@ -13,23 +13,23 @@ const app = express();
  * @param settings = settings object
  * @param initialiseBot = {Boolean}
  */
-const start = ( settings, initialiseBot ) => {
-    const PORT = process.env.PORT || settings.PORT;
-    app.listen(PORT, async err => {
-        if (err) {
-            console.error(err);
-        } else {
-            console.log(`Server running on http://localhost:${PORT}`);
-            if(initialiseBot) {
-                await WorkerBot.initialiseBot();
-            }
-        }
-    });
+const start = (settings, initialiseBot) => {
+  const PORT = process.env.PORT || settings.PORT;
+  app.listen(PORT, async (err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(`Server running on http://localhost:${PORT}`);
+      if (initialiseBot) {
+        await WorkerBot.initialiseBot();
+      }
+    }
+  });
 
-    app.get('/ping', (req, res) => res.send('pong'));
+  app.get('/ping', (req, res) => res.send('pong'));
 };
 
 export {
-    start,
-    app
-}
+  start,
+  app,
+};
