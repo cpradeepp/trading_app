@@ -10,7 +10,7 @@ import OrderBook from './services/orderBook';
 import { logTable } from './helpers/logger';
 
 const ORDER_BOOK_INTERVAL = 5000;
-const ASSET_BALANCE_INTERVAL = 30000;
+const ASSET_BALANCE_INTERVAL = 5000;
 
 class WorkerBot {
   async initialiseBot() {

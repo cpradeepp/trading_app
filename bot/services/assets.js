@@ -6,7 +6,7 @@ class Assets {
     };
   }
 
-  async updateBalance(order, action) {
+  updateBalance(order, action) {
     const { ETH, USD } = this.balance;
     const { id, amount, price } = order;
 
@@ -23,7 +23,7 @@ class Assets {
             ETH: newETH,
           };
         } else {
-          throw new Error(`Insufficient USD funds! Cannot fulfill order ${id}`);
+          throw new Error(`Insufficient USD funds! Cannot fulfill order ${id}, amount-${amount}, USD-${USD}`);
         }
       } else if (action === 'ask') {
         if (ETH >= amount) {
@@ -37,7 +37,7 @@ class Assets {
             ETH: newETH,
           };
         } else {
-          throw new Error(`Insufficient ETH funds! Cannot fulfill order ${id}`);
+          throw new Error(`Insufficient ETH funds! Cannot fulfill order ${id}, amount-${amount}, ETH-${ETH}`);
         }
       }
     } catch (e) {

@@ -113,7 +113,7 @@ class OrderBook {
       }
     }
 
-    this.updateTradeDataState(bidOrders, askOrders, fulfilledOrders);
+    await this.updateTradeDataState(bidOrders, askOrders, fulfilledOrders);
     logEndOfInfo('FULFILLING ORDERS');
   }
 
@@ -125,9 +125,9 @@ class OrderBook {
      * @param type = {bid or ask}
      * @returns {{amount: *, price: *, created: Date, id, type: *}}
      */
-  static async constructOrderArray(asset, min, max, type) {
+  static constructOrderArray(asset, min, max, type) {
     const id = generateUuid();
-    const assetOffset = asset * ASSET_OFFSET_PERCENT / 100;
+    const assetOffset = asset * (ASSET_OFFSET_PERCENT / 100);
     const price = getRandomNumber(min, max, BID_ASK_ROUND_OFF);
     const amount = getRandomNumber(0, assetOffset, CURRENCY_ROUND_OFF);
     const created = new Date();
