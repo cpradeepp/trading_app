@@ -6,6 +6,9 @@ A bot which will leverage the DeversiFi API to calculate the best bid and ask. I
 
 For every 5 seconds it requests the API and fulfills the orders based on the values set and update the account balance. The account balance in logged every 30 seonds.
 
+## Requirements
+    1. node > v12.18.3
+
 ## Installation instruction
 
 ### API server:
